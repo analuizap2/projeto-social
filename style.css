@@ -1,0 +1,971 @@
+:root { 
+    /* Cores principais */ 
+    --cor-primaria: #2E7D32; 
+    --cor-primaria-escura: #1B5E20; 
+    --cor-primaria-clara: #66BB6A; 
+ 
+    /* Cores secundárias */ 
+    --cor-secundaria: #81C784; 
+    --cor-destaque: #A5D6A7; 
+ 
+    /* Tons neutros */ 
+    --cor-branco: #FFFFFF; 
+    --cor-fundo: #F5F7F5; 
+    --cor-cinza-claro: #E0E0E0; 
+    --cor-texto: #263238; 
+ 
+    /* Tipografia */ 
+    --fonte-h1: 2.5rem; 
+    --fonte-h2: 2rem; 
+    --fonte-h3: 1.5rem; 
+    --fonte-texto: 1rem; 
+    --fonte-pequena: 0.875rem; 
+ 
+    /* Espaçamentos */ 
+    --espaco-1: 0.25rem; 
+    --espaco-2: 0.5rem; 
+    --espaco-3: 1rem; 
+    --espaco-4: 1.5rem; 
+    --espaco-5: 2rem; 
+    --espaco-6: 3rem; 
+    --espaco-7: 4rem; 
+} 
+
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */ 
+ 
+* { 
+    box-sizing: border-box; 
+} 
+ 
+html { 
+    scroll-behavior: smooth; 
+} 
+ 
+body { 
+    margin: 0; 
+    background-color: var(--cor-fundo); 
+    color: var(--cor-texto); 
+    font-family: Arial, sans-serif; 
+    line-height: 1.6; 
+} 
+
+
+/* =========================
+   CABEÇALHO
+========================= */ 
+ 
+header { 
+    padding: var(--espaco-5); 
+    background-color: var(--cor-destaque); 
+    text-align: center; 
+} 
+ 
+h1 { 
+    margin: 0;
+    font-size: var(--fonte-h1); 
+    color: var(--cor-primaria-escura); 
+} 
+ 
+h2 { 
+    font-size: var(--fonte-h2); 
+    color: var(--cor-primaria); 
+} 
+ 
+h3 { 
+    font-size: var(--fonte-h3); 
+    color: var(--cor-primaria-escura); 
+} 
+
+
+/* =========================
+   NAVEGAÇÃO - FLEXBOX
+========================= */ 
+ 
+.menu { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: var(--espaco-3); 
+    background-color: var(--cor-primaria-escura); 
+    border-radius: 3px 3px 3px;
+} 
+
+
+/* Lista principal */ 
+ 
+.menu-list { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: var(--espaco-3); 
+    margin: 0; 
+    padding: 0; 
+    list-style: none; 
+} 
+
+
+/* Links do menu */ 
+ 
+.menu-list a { 
+    display: block; 
+    padding: var(--espaco-2) var(--espaco-3); 
+    color: var(--cor-branco); 
+    text-decoration: none;
+
+    transition: 
+        background-color 0.3s ease,
+        color 0.3s ease;
+} 
+ 
+.menu-list a:hover { 
+    background-color: var(--cor-primaria); 
+}
+
+
+/* FOCUS - navegação pelo teclado */
+
+.menu-list a:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
+}
+
+
+/* ACTIVE - enquanto o link está sendo pressionado */
+
+.menu-list a:active {
+    background-color: var(--cor-primaria-clara);
+    color: var(--cor-texto);
+} 
+
+
+/* =========================
+   DROPDOWN
+========================= */ 
+ 
+.dropdown { 
+    position: relative; 
+} 
+
+
+/* Submenu escondido */ 
+ 
+.submenu { 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    z-index: 10;
+
+    min-width: 220px; 
+    margin: 0; 
+    padding: 0; 
+    background-color: var(--cor-primaria-escura); 
+    list-style: none; 
+ 
+    display: none;
+
+    opacity: 0;
+    transform: translateY(-5px);
+
+    transition: 
+        opacity 0.3s ease,
+        transform 0.3s ease;
+} 
+
+
+/* Mostra o submenu ao passar o mouse ou receber foco */ 
+ 
+.dropdown:hover .submenu, 
+.dropdown:focus-within .submenu { 
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   BOTÃO HAMBÚRGUER
+========================= */ 
+ 
+#menu-toggle { 
+    display: none; 
+} 
+ 
+.menu-icon { 
+    display: none; 
+    color: var(--cor-branco); 
+    font-size: 2rem; 
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+}
+
+
+/* Hover do botão hambúrguer */
+
+.menu-icon:hover {
+    color: var(--cor-secundaria);
+}
+
+
+/* Focus do botão hambúrguer */
+
+#menu-toggle:focus + .menu-icon {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 3px;
+}
+
+
+/* Active do botão hambúrguer */
+
+.menu-icon:active {
+    color: var(--cor-primaria-clara);
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */ 
+ 
+main { 
+    max-width: 1200px; 
+    margin: auto; 
+    padding: var(--espaco-5); 
+} 
+ 
+section, 
+article { 
+    margin-bottom: var(--espaco-5); 
+}
+
+
+/* Imagens */
+
+main img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* =========================
+   GRID
+========================= */ 
+ 
+.campanhas { 
+    display: grid; 
+    grid-template-columns: repeat(12, 1fr); 
+    gap: var(--espaco-4); 
+} 
+
+
+/* =========================
+   CAMPANHAS - FLEXBOX
+========================= */ 
+ 
+.campanha { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+ 
+    grid-column: span 4; 
+ 
+    padding: var(--espaco-4); 
+    background-color: var(--cor-branco); 
+    border: 1px solid var(--cor-cinza-claro);
+    
+    transition: 
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Interação dos cartões */
+
+.campanha:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   COMO AJUDAR - FLEXBOX
+========================= */ 
+ 
+.como-ajudar { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+ 
+    padding: var(--espaco-4); 
+    background-color: var(--cor-destaque); 
+} 
+ 
+.como-ajudar a { 
+    display: inline-block; 
+    padding: var(--espaco-2) var(--espaco-3); 
+    background-color: var(--cor-primaria); 
+    color: var(--cor-branco); 
+    border: 2px solid var(--cor-primaria);
+    text-decoration: none;
+    border-radius: 2px 2px 2px;
+
+    transition: 
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+} 
+
+
+/* HOVER - passa o mouse */
+
+.como-ajudar a:hover { 
+    background-color: var(--cor-primaria-escura);
+    border-color: var(--cor-primaria-escura);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* FOCUS - recebe foco */
+
+.como-ajudar a:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 3px;
+}
+
+
+/* ACTIVE - botão pressionado */
+
+.como-ajudar a:active {
+    background-color: var(--cor-primaria-clara);
+    border-color: var(--cor-primaria-clara);
+    box-shadow: none;
+}
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+form {
+    width: 100%;
+}
+
+
+/* =========================
+   FIELDSET
+========================= */
+
+fieldset {
+    margin: 0 0 var(--espaco-5);
+    padding: var(--espaco-4);
+
+    background-color: var(--cor-branco);
+
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: 6px;
+}
+
+legend {
+    padding: 0 var(--espaco-2);
+
+    color: var(--cor-primaria-escura);
+
+    font-size: var(--fonte-h3);
+    font-weight: bold;
+}
+
+
+/* =========================
+   CAMPOS DO FORMULÁRIO
+========================= */
+
+.campo {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+
+    gap: var(--espaco-3);
+
+    margin-bottom: var(--espaco-3);
+}
+
+.campo:last-child {
+    margin-bottom: 0;
+}
+
+
+.campo label {
+    font-weight: bold;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select,
+textarea {
+    border: 2px solid var(--cor-cinza-claro);
+    padding: var(--espaco-2);
+
+    font-family: Arial, sans-serif;
+    font-size: var(--fonte-texto);
+
+    background-color: var(--cor-branco);
+
+    transition: 
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+
+/* Campos dentro do formulário */
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    min-height: 42px;
+
+    border-radius: 4px;
+}
+
+
+/* =========================
+   FOCUS - campo selecionado
+========================= */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: var(--cor-primaria);
+
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+
+/* =========================
+   CAMPOS VÁLIDOS
+========================= */
+
+/*
+   :user-valid evita que todos os campos
+   apareçam verdes antes da interação.
+*/
+
+input:user-valid,
+select:user-valid,
+textarea:user-valid {
+    border-color: var(--cor-primaria);
+}
+
+
+/* =========================
+   CAMPOS INVÁLIDOS
+========================= */
+
+/*
+   :user-invalid evita que os campos
+   obrigatórios vazios apareçam vermelhos
+   assim que a página é aberta.
+*/
+
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+    border-color: #C62828;
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.campo-textarea {
+    align-items: start;
+}
+
+.campo textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* =========================
+   DISPONIBILIDADE
+========================= */
+
+.disponibilidade {
+    display: block;
+}
+
+.disponibilidade p {
+    margin: 0 0 var(--espaco-2);
+}
+
+.disponibilidade div {
+    margin-bottom: var(--espaco-2);
+}
+
+.disponibilidade input {
+    width: auto;
+    min-height: auto;
+}
+
+
+/* =========================
+   CHECKBOX
+========================= */
+
+input[type="checkbox"] {
+    accent-color: var(--cor-primaria);
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BOTÃO DO FORMULÁRIO
+========================= */
+
+form button {
+    padding: var(--espaco-3) var(--espaco-5);
+
+    background-color: var(--cor-primaria);
+
+    color: var(--cor-branco);
+
+    font-family: Arial, sans-serif;
+    font-size: var(--fonte-texto);
+    font-weight: bold;
+
+    border: 2px solid var(--cor-primaria);
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+}
+
+
+/* HOVER */
+
+form button:hover {
+    background-color: var(--cor-primaria-escura);
+    border-color: var(--cor-primaria-escura);
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+
+    transform: translateY(-2px);
+}
+
+
+/* FOCUS */
+
+form button:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 3px;
+}
+
+
+/* ACTIVE */
+
+form button:active {
+    background-color: var(--cor-primaria-clara);
+    border-color: var(--cor-primaria-clara);
+
+    color: var(--cor-texto);
+
+    box-shadow: none;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   DISABLED
+========================= */
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    background-color: var(--cor-cinza-claro);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+
+/* =========================
+   BADGE
+========================= */
+
+.badge {
+    display: inline-block;
+
+    padding: var(--espaco-1) var(--espaco-2);
+
+    background-color: var(--cor-primaria);
+
+    color: var(--cor-branco);
+
+    font-size: var(--fonte-pequena);
+    font-weight: bold;
+
+    border-radius: 4px;
+}
+
+
+/* =========================
+   ALERTA
+========================= */
+
+.alerta {
+    margin: var(--espaco-5) 0;
+    padding: var(--espaco-3);
+
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
+
+    border-left: 5px solid var(--cor-primaria);
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    max-width: 400px;
+
+    margin: var(--espaco-5) 0;
+    padding: var(--espaco-3);
+
+    background-color: var(--cor-primaria-escura);
+
+    color: var(--cor-branco);
+
+    border-radius: 4px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+    animation: aparecer 0.5s ease;
+}
+
+
+/* Animação do toast */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    margin-top: var(--espaco-6);
+    padding: var(--espaco-4);
+
+    background-color: var(--cor-primaria-escura);
+
+    color: var(--cor-branco);
+
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: var(--fonte-pequena);
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+
+/* =========================
+   1 - CELULAR PEQUENO
+   até 480px
+========================= */
+
+@media (max-width: 480px) {
+
+    main {
+        padding: var(--espaco-3);
+    }
+
+
+    header {
+        padding: var(--espaco-4);
+    }
+
+
+    h1 {
+        font-size: 2rem;
+    }
+
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+
+    /* Mostra o botão hambúrguer */
+
+    .menu-icon {
+        display: block;
+    }
+
+
+    /* Esconde o menu inicialmente */
+
+    .menu-list {
+        display: none;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 0;
+    }
+
+
+    /* Mostra o menu quando o checkbox é marcado */
+
+    #menu-toggle:checked ~ .menu-list {
+        display: flex;
+    }
+
+
+    .menu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .menu-list a {
+        text-align: center;
+    }
+
+
+    /* Dropdown no celular */
+
+    .submenu {
+        position: static;
+        width: 100%;
+    }
+
+
+    .campanha {
+        grid-column: span 12;
+    }
+
+
+    /* Formulário */
+
+    fieldset {
+        padding: var(--espaco-3);
+    }
+
+
+    .campo {
+        grid-template-columns: 1fr;
+        gap: var(--espaco-1);
+    }
+
+
+    .campo label {
+        margin-bottom: var(--espaco-1);
+    }
+
+
+    form button {
+        width: 100%;
+    }
+
+
+    .toast {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================
+   2 - CELULAR
+   481px até 767px
+========================= */
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .menu-icon {
+        display: block;
+    }
+
+
+    .menu-list {
+        display: none;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 0;
+    }
+
+
+    #menu-toggle:checked ~ .menu-list {
+        display: flex;
+    }
+
+
+    .menu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .menu-list a {
+        text-align: center;
+    }
+
+
+    .submenu {
+        position: static;
+        width: 100%;
+    }
+
+
+    .campanha {
+        grid-column: span 12;
+    }
+
+
+    /* Formulário */
+
+    .campo {
+        grid-template-columns: 1fr;
+        gap: var(--espaco-1);
+    }
+
+
+    .campo label {
+        margin-bottom: var(--espaco-1);
+    }
+
+
+    form button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================
+   3 - TABLET
+   768px até 991px
+========================= */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .menu-icon {
+        display: none;
+    }
+
+
+    .menu-list {
+        display: flex;
+    }
+
+
+    .campanha {
+        grid-column: span 6;
+    }
+
+
+    .campo {
+        grid-template-columns: 160px 1fr;
+    }
+
+}
+
+
+/* =========================
+   4 - NOTEBOOK
+   992px até 1199px
+========================= */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .menu-icon {
+        display: none;
+    }
+
+
+    .menu-list {
+        display: flex;
+    }
+
+
+    .campanha {
+        grid-column: span 4;
+    }
+
+}
+
+
+/* =========================
+   5 - TELA GRANDE
+   1200px ou mais
+========================= */
+
+@media (min-width: 1200px) {
+
+    main {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+
+    .menu-icon {
+        display: none;
+    }
+
+
+    .menu-list {
+        display: flex;
+    }
+
+
+    .campanha {
+        grid-column: span 4;
+    }
+
+}
