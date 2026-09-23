@@ -434,7 +434,24 @@ textarea {
     border-radius: 4px;
 }
 
+.campo input[type="checkbox"] {
+    width: auto;
+    min-height: auto;
+}
 
+.campo.erro input,
+.campo.erro select {
+    border: 2px solid #d32f2f;
+}
+
+.mensagem-erro {
+    display: block;
+    grid-column: 1 / -1;
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-top: -8px;
+    margin-bottom: var(--espaco-3);
+}
 /* =========================
    FOCUS - campo selecionado
 ========================= */

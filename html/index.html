@@ -38,12 +38,12 @@
         <ul class="menu-list">
 
             <li>
-                <a href="index.html">Início</a>
+                <a href="#inicio">Início</a>
             </li>
 
             <li class="dropdown">
 
-                <a href="projetos.html">Projetos</a>
+                <a href="#projetos">Projetos</a>
 
                 <ul class="submenu">
 
@@ -70,7 +70,11 @@
             </li>
 
             <li>
-                <a href="cadastros.html">Cadastros</a>
+                <a href="#cadastro">Cadastros</a>
+            </li>
+
+            <li>
+                <a href="#historico">Histórico</a>
             </li>
 
         </ul>
@@ -78,14 +82,14 @@
     </nav>
 
 
-    <main class="container">
+    <main id="app" class="container">
 
         <section>
 
             <h2>Sobre o Instituto</h2>
 
             <img
-                src="imagens/doacao-de-comida.png"
+                src="../imagens/doacao-de-comida.png"
                 alt="Voluntários realizando uma ação solidária pelo Instituto Mãos que Ajudam"
             >
 
@@ -152,6 +156,14 @@
         </section>
 
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="../js/templates.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/form.js"></script>
+    <script src="../js/router.js"></script>
+    <script src="../js/app.js"></script>
 
 </body>
 
